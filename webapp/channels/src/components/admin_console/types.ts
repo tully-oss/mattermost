@@ -108,11 +108,7 @@ export type AdminDefinitionSettingFileUpload = AdminDefinitionSettingBase & {
     uploading_text: string | MessageDescriptor;
     fileType: string;
     upload_action: (file: File, success: (data: any) => void, error: (err: any) => void) => void;
-    set_action?: (
-        success: (filename: string) => void,
-        error: (err: {message: string}) => void,
-        data: string,
-    ) => void;
+    set_action?: () => void;
     setFromMetadataField?: string;
     remove_action: (success: (data: any) => void, error: (err: any) => void) => void;
 }
