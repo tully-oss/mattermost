@@ -1,6 +1,3 @@
-// Copyright (c) 2015-present Mattermost, Inc. All Rights Reserved.
-// See LICENSE.txt for license information.
-
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
 import globals from 'globals';
 import tsParser from '@typescript-eslint/parser';
@@ -8,7 +5,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import js from '@eslint/js';
 import {FlatCompat} from '@eslint/eslintrc';
-import headers from 'eslint-plugin-headers';
+import eslintPluginHeader from 'eslint-plugin-header';
 import pluginCypress from 'eslint-plugin-cypress';
 import noOnlyTest from 'eslint-plugin-no-only-tests';
 
@@ -19,6 +16,8 @@ const compat = new FlatCompat({
     recommendedConfig: js.configs.recommended,
     allConfig: js.configs.all,
 });
+
+eslintPluginHeader.rules.header.meta.schema = false;
 
 export default [
     {
@@ -34,7 +33,7 @@ export default [
         files: ['**/*.ts', '**/*.js'],
         plugins: {
             '@typescript-eslint': typescriptEslint,
-            headers,
+            header: eslintPluginHeader,
             cypress: pluginCypress,
             'no-only-tests': noOnlyTest,
         },
@@ -74,14 +73,11 @@ export default [
             '@typescript-eslint/no-require-imports': 'off',
             '@typescript-eslint/no-unused-expressions': 'off',
             '@typescript-eslint/no-var-requires': 'off',
-            'headers/header-format': [
+            'header/header': [
                 'error',
-                {
-                    source: 'string',
-                    style: 'line',
-                    content: 'Copyright (c) 2015-present Mattermost, Inc. All Rights Reserved.\nSee LICENSE.txt for license information.',
-                    trailingNewlines: 2,
-                },
+                'line',
+                ' Copyright (c) 2015-present Mattermost, Inc. All Rights Reserved.\n See LICENSE.txt for license information.',
+                2,
             ],
             'import/no-duplicates': 2,
             'import/order': [

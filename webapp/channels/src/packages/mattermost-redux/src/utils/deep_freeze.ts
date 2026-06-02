@@ -1,5 +1,3 @@
-/* eslint-disable headers/header-format */
-
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  * All rights reserved.
@@ -9,6 +7,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  *
  */
+
+/* eslint-disable header/header */
 
 /**
  * If your application is accepting different values for the same field over

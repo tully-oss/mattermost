@@ -1,14 +1,21 @@
-// Copyright (c) 2015-present Mattermost, Inc. All Rights Reserved.
-// See LICENSE.txt for license information.
+"use strict";
 
-import base from './configs/base.js';
-import react from './configs/react.js';
-import rules from './rules/index.js';
-
-export default {
+module.exports = {
     configs: {
-        base,
-        react,
+        base: {
+            extends: [
+                require.resolve('./configs/.eslintrc.json'),
+            ],
+        },
+        react: {
+            extends: [
+                require.resolve('./configs/.eslintrc.json'),
+                require.resolve('./configs/.eslintrc-react.json'),
+            ],
+        },
     },
-    rules,
+    rules: {
+        'no-dispatch-getstate': require('./rules/no-dispatch-getstate'),
+        'use-external-link': require('./rules/use-external-link'),
+    },
 };
